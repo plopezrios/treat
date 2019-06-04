@@ -1,0 +1,5 @@
+treat
+*.mod
+*.o
+.*.swp
+*~
