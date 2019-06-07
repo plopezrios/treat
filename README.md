@@ -29,6 +29,7 @@ Usage example
 The following should summarize the main capabilities of the code:
 
 
+```
 $ cat input
 # Enable input echo.
 set echo
@@ -245,3 +246,4 @@ EVAL  Mean       -5.742580415377E-03   2.479621926337E-02
 
 TREAT> 
 Quitting.
+```
