@@ -195,7 +195,8 @@ CONTAINS
         call flush(6)
         read(5,'(a)',iostat=ierr)command
         if(ierr==0)then
-          if(input_echo)write(6,'(a)')trim(command)
+          command=adjustl(command)
+          if(input_echo.and.command(1:1)/='#')write(6,'(a)')trim(command)
         else
           write(6,'()')
         endif
@@ -206,7 +207,6 @@ CONTAINS
          &ierror)
       if(ierror/=0)call quit()
       if(MPI_MASTER)write(6,'()')
-      command=adjustl(command)
       if(command(1:1)=='#')cycle
 
       ! Execute command.
