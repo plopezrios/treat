@@ -3100,10 +3100,14 @@ CONTAINS
         write(6,'(2x,"* ",a,":")')'Centre'
         write(6,'(4x,"* ",a,t25,":",2(1x,es20.12))')'Contrib. to norm',&
            &centre_mom(0),dcentre_mom(0)
-        write(6,'(4x,"* ",a,t25,":",2(1x,es20.12))')'Contrib. to mean',&
-           &centre_mom(1),dcentre_mom(1)
-        write(6,'(4x,"* ",a,t25,":",2(1x,es20.12))')'Contrib. to var.',&
-           &centre_mom(2),dcentre_mom(2)
+        if(have_mom1)then
+          write(6,'(4x,"* ",a,t25,":",2(1x,es20.12))')'Contrib. to mean',&
+             &centre_mom(1),dcentre_mom(1)
+          if(tail_form%momdef>=MOMDEF_MOM2)then
+            write(6,'(4x,"* ",a,t25,":",2(1x,es20.12))')'Contrib. to var.',&
+               &centre_mom(2),dcentre_mom(2)
+          endif
+        endif
         ! Report total moments.
         if(tail_form%momdef>=MOMDEF_MOM0)then
           write(6,'(2x,"* ",a,t25,":",2(1x,es20.12))')'Norm',mom(0),dmom(0)
@@ -3262,11 +3266,11 @@ CONTAINS
       write(6,'("EVAL  Std.mean ",2(1x,es20.12))')mom_std(1),dmom_std(1)
       write(6,'("EVAL  Std.var. ",2(1x,es20.12))')mom_std(2),dmom_std(2)
       if(tail_form%momdef>=MOMDEF_MOM0)then
-        write(6,'("EVAL  Norm     ",2(1x,es20.12))')mom(0),dmom(0)
+        write(6,'("EVAL  TRE.norm ",2(1x,es20.12))')mom(0),dmom(0)
         if(have_mom1)then
-          write(6,'("EVAL  Mean     ",2(1x,es20.12))')mom(1),dmom(1)
+          write(6,'("EVAL  TRE.mean ",2(1x,es20.12))')mom(1),dmom(1)
           if(tail_form%momdef>=MOMDEF_MOM2)then
-            write(6,'("EVAL  Variance ",2(1x,es20.12))')mom(2),dmom(2)
+            write(6,'("EVAL  TRE.var. ",2(1x,es20.12))')mom(2),dmom(2)
           endif
         endif
       endif

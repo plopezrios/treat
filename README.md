@@ -9,16 +9,20 @@ heavy-tailed distributions of known tail indices.
 TREAT is a stand-alone Fortran utility using the MPI and LAPACK libraries.  The
 code can be compiled with:
 
-  mpif90 -o treat treat.sh -llapack
+```
+mpif90 -o treat treat.f90 -llapack
+```
 
 The compile.sh script is provided for reference, and also shows how to use
 Intel's MKL LAPACK library.
 
 TREAT can be run with, e.g.,
 
-  ./treat
-  mpirun -np 4 ./treat
-  mpirun -np 20 ./treat < input > output &
+```
+./treat
+mpirun -np 4 ./treat
+mpirun -np 20 ./treat < input > output &
+```
 
 TREAT uses a command-line interface which can be scripted easily, and the main
 output entities are easily grep-able (notice the lines starting ASSESS, STAT,
@@ -26,7 +30,7 @@ and EVAL in the example below).  Type 'help' at the prompt for instructions.
 
 Usage example
 =============
-The following should summarize the main capabilities of the code:
+The following summarizes the main capabilities of the code:
 
 
 ```
@@ -231,7 +235,6 @@ Tail-regression estimation
   * Centre:
     * Contrib. to norm  :   5.536000000000E-01   0.000000000000E+00
     * Contrib. to mean  :  -7.846823051187E-03   5.699129803671E-03
-    * Contrib. to var.  :   1.042149756933E-01   2.558765908128E-03
   * Norm                :   9.998963056178E-01   3.611214539491E-04
   * Mean                :  -5.742580415377E-03   2.479621926337E-02
 
@@ -241,8 +244,8 @@ Plotted fit to "fit.plot".
 
 EVAL  Std.mean   -1.828833062764E-02   4.256659091789E-02
 EVAL  Std.var.    1.947873528561E+01   3.782317526553E+00
-EVAL  Norm        9.998963056178E-01   3.611214539491E-04
-EVAL  Mean       -5.742580415377E-03   2.479621926337E-02
+EVAL  TRE.norm    9.998963056178E-01   3.611214539491E-04
+EVAL  TRE.mean   -5.742580415377E-03   2.479621926337E-02
 
 TREAT> 
 Quitting.
