@@ -38,7 +38,7 @@ $ cat input
 # Enable input echo.
 set echo
 # Generate sample of 10000 independent random numbers identically distributed
-# according to heavy-tailed dstribution with principal exponent mu=2.5 and
+# according to heavy-tailed distribution with principal exponent mu=2.5 and
 # exponent increment dmu=0.5.
 generate 10000 h(2.5) 0.5*h(3)
 # Verify absence of serial correlation (independent random number assumption).
