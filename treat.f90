@@ -8,6 +8,7 @@ PROGRAM treat
   !                                                          !
   ! PLR 05.2016                                              !
   !----------------------------------------------------------!
+  USE mpi
   IMPLICIT NONE
 
   ! Derived types
@@ -119,8 +120,6 @@ PROGRAM treat
   ! Global variables for MPI functionality.
   INTEGER MPI_NPROC,MPI_IPROC
   LOGICAL MPI_MASTER
-  ! Load MPI header file.
-  INCLUDE "mpif.h"
 
   ! Initialize MPI.
   call init_mpi(MPI_NPROC,MPI_IPROC,MPI_MASTER)
